@@ -1,0 +1,13 @@
+---
+- name: Update repositories cache
+  apt:
+    update_cache: yes
+- name: "apache installation"
+  apt:
+    name: apache2  
+    state: "present"
+- name: "apache service activation"
+  service:
+    name: "apache2"
+    state: "started"
+    enabled: yes

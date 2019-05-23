@@ -1,0 +1,1 @@
+ansible-playbook -i inventory/hosts playbooks/install-apache.yml -v  --private-key=secret/ansible_formation.pem -u ubuntu
