@@ -1,0 +1,59 @@
+# depuis combien de temps la machine fonctionne:
+ansible -m command -a 'uptime' all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+
+# afficher l'utilisation  de disque dure:
+ansible -m command -a 'df -h' all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+
+# rebboter la machine
+ansible -m command -a 'sudo reboot' all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+
+# verifier à nouveau depuis combien de temps la machine focntionne
+ansible -m command -a 'uptime' all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+
+# arrter toutes les machines
+ansible -m command -a 'shudtown' all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+
+#Obtenir toute la configuration d’une machine 
+ansible  all -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -m setup
+
+# Appliquer un filtre sur un champs bien défini
+ansible  all -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -m setup  -a "filter=ansible_distribution*"
+
+#  copier un fichier sur le serveur distant
+touch /tmp/toto.txt
+ansible  -m copy -a "src=/tmp/toto.txt dest=/tmp/toto.txt " all -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+
+#Afficher l’utilisation de la mémoire sur les serverus distants
+ansible -m command -a "free -h " all -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+
+#ecrire dans un fichier 
+ansible  -m shell -a 'echo hello word > /tmp/toto.txt'  all -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+
+#Afficher la mémoire physique allouer aux servers
+ansible localhost -m shell -a 'cat /proc/meminfo|head -2' all -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+
+# créer un repertoire 
+ansible  -m file -a "path=/$USER/oracle state=directory mode=0755" all -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -b 
+
+# créer un fichier 
+ansible  -m file -a "path=/$USER/oracle state=touch mode=0755" all -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -b
+
+# afficher la date sur les serveurs distants
+ansible -m shell -a 'date' all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem
+ 
+# installer une base de données mariadb 
+ansible  -m apt -a "name=mariadb-server state=present" all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -b 
+
+# desinstaller une base de données mariadb
+ansible  -m apt -a "name=mariadb-server state=remove" all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -b 
+ 
+# Démarrer et activer la base le service mariadb
+ansible  -m service -a "name=mariadb state=started enabled=yes" all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -b
+
+#Supprimer une base de données mariadb-server
+ansible -m apt -a "name=mariadb-server state=removed" all  -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -b
+
+
+
+
+
