@@ -1,3 +1,4 @@
 ansible-playbook -i inventory/hosts playbooks/install-apache.yml -v  --private-key=secret/ansible_formation.pem -u ubuntu
 ansible-playbook -i inventory/hosts playbooks/update_packages.yml -v  --private-key=secret/ansible_formation.pem -u ubuntu
 ansible-playbook -i inventory/hosts playbooks/mariadb.yml -v  --private-key=secret/ansible_formation.pem -u ubuntu
+ansible-playbook -i inventory/hosts playbooks/site.yml -v  --private-key=secret/ansible_formation.pem -u ubuntu
