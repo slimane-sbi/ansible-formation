@@ -1,5 +1,5 @@
 - name: update the package of the machine 
-  hosts: servers
+  hosts: webservers
   become: yes
   tasks:
   - name: print the current version of the OS

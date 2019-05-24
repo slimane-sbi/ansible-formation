@@ -10,7 +10,7 @@
       state: latest
   - name: write the apache config file
     template:
-      src: /srv/httpd.j2
+      src: templates/apache2.conf.j2
       dest: /etc/httpd.conf
     notify:
     - restart apache
