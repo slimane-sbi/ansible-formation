@@ -1,0 +1,20 @@
+---
+- name: tester les boucle with_items
+  hosts: localhost
+  become: yes
+  tasks:
+  - name: "Afficher les items"
+    debug: 
+       msg: "An item: {{item}}"
+    with_items:
+     - vim
+     - emacs
+     - nano
+  - name: "installer les éditeurs"
+    apt: "{{item}}"
+    with_items:
+     - vim
+     - emacs
+     - nano
+
+
