@@ -1,2 +1,3 @@
 ansible-playbook playbooks/update_packages_ubuntu.yml -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -b
-
+ansible-playbook playbooks/install_apache.yml -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -b
+ansible-playbook playbooks/site.yml -i inventory/hosts -u ubuntu --private-key=secret/ansible_formation.pem -b
