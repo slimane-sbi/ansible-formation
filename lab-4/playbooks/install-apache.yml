@@ -2,6 +2,6 @@
 
 - name: "Apache installation"
   become: yes
-  hosts: apache
+  hosts: webservers
   roles:
     - role: "apache"

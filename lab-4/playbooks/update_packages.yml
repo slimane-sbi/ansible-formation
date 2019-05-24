@@ -1,0 +1,8 @@
+---
+
+- name: update the packages of the servers ubuntu 
+  hosts: webservers
+  become: yes
+  roles:
+    - update_packages
+
