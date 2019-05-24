@@ -1,0 +1,24 @@
+- name: update the package of the machine 
+  hosts: servers
+  become: yes
+  tasks:
+  - name: print the current version of the OS
+    shell: "lsb_release -a"                                           
+    ignore_errors: yes
+
+  - name: Remove useless packages from the cache
+    apt:
+      autoclean: yes
+
+  - name: Update repositories cache 
+    apt:
+      update_cache: yes
+
+  - name: Update all packages to the latest version
+    apt:
+      upgrade: dist
+
+  - name: Remove dependencies that are no longer required
+    apt:
+      autoremove: yes
+
