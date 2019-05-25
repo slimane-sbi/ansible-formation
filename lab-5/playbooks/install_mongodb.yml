@@ -1,0 +1,7 @@
+---
+- name: "install mongodb"
+  hosts: localhost
+  become: yes
+  roles:
+    - "update_packages"
+    - "girder.mongodb"
