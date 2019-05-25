@@ -1,0 +1,7 @@
+---
+- hosts: webservers
+
+#- include: install_apache.yml
+- import_playbook: install_apache.yml
+- import_playbook: update_packages_ubuntu.yml
+- include: update_packages_ubuntu.yml

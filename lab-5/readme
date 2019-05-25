@@ -1,0 +1,5 @@
+this playbooks is tested with following version:
+ansible: 2.6
+python: 2.7
+jinja: 2.10.1
+date: 25-05-2019
